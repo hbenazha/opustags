@@ -14,11 +14,11 @@ jobs:
       uses: actions/checkout@v4
     - name: Setup UTF-8 locale
       run: |
-        sudo apt-get update
-        sudo apt-get install -y locales
-        sudo locale-gen en_US.UTF-8
-        export LANG=en_US.UTF-8
-        export LC_ALL=en_US.UTF-8
+            sudo dnf update -y
+            sudo dnf install -y glibc-langpack-en
+            export LANG=en_US.UTF-8
+            export LC_ALL=en_US.UTF-8
+            locale
     - name: Install dependencies
       run: dnf -y install cmake gcc-c++ libubsan libasan libogg-devel 'perl(Test::Harness)' 'perl(strict)' 'perl(warnings)' 'perl(utf8)' 'perl(Test::More)' 'perl(Test::Deep)' 'perl(Digest::MD5)' 'perl(File::Basename)' 'perl(File::Copy)' 'perl(IPC::Open3)' 'perl(List::MoreUtils)' 'perl(Symbol)' ffmpeg-free
     - name: Build
